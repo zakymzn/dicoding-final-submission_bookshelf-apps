@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshelf Apps</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header>
+        <div id="judul">
+            <h1>Bookshelf Apps</h1>
+        </div>
+
+        <div id="menu">
+            <!-- Search bar -->
+            <div id="search-bar">
+                <form id="searching">
+                    <input type="text" name="search" id="input-search" placeholder="Cari buku di sini ...">
+                    <!-- <div id="search"> -->
+                    <button>
+                        <span class="material-symbols-outlined">
+                            search
+                        </span>
+                    </button>
+                    <!-- </div> -->
+
+                </form>
+            </div>
+
+            <!-- Dark Mode -->
+            <div id="darkMode">
+                <input type="checkbox" id="darkToggle">
+                <label for="darkToggle">
+                    <div>
+                        <span class="material-symbols-outlined">
+                            light_mode
+                        </span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Input buku start -->
+        <section id="input-section">
+            <h2>Masukkan buku baru</h2>
+            <form id="input-buku">
+                <div class="input">
+                    <label for="inputJudul">Judul</label>
+                    <br>
+                    <input type="text" id="inputJudul" required>
+                </div>
+                <div class="input">
+                    <label for="inputPenulis">Penulis</label>
+                    <br>
+                    <input type="text" id="inputPenulis" required>
+                </div>
+                <div class="input">
+                    <label for="inputTahun">Tahun</label>
+                    <br>
+                    <input type="text" id="inputTahun" required>
+                </div>
+                <p><strong>Masukkan ke</strong></p>
+                <div id="input-button">
+                    <button id="submitBelumSelesaiDibaca" type="submit">
+                        <strong>Belum selesai dibaca</strong>
+                    </button>
+                    <!-- <br> -->
+                    <button id="submitSelesaiDibaca" type="submit">
+                        <strong>Selesai dibaca</strong>
+                    </button>
+                </div>
+            </form>
+        </section>
+        <!-- Input buku end -->
+
+        <!-- Rak buku start -->
+        <section id="rak-buku-section">
+            <!-- Rak buku belum selesai dibaca -->
+            <div class="rak-buku">
+                <h2>Belum selesai dibaca</h2>
+                <div id="daftarBukuBelumSelesaiDibaca" class="daftarBuku">
+                    <!-- <div class="isi">
+                        <h3>Judul Buku</h3>
+                        <p>Penulis : </p>
+                        <p>Tahun terbit :</p>
+                        <div class="buttons">
+                            <button class="tandaiSelesaiDibaca">
+                                <span class="material-symbols-outlined">
+                                    check_circle
+                                </span>
+                            </button>
+                            <button class="hapus">
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- Rak buku sudah selesai dibaca -->
+            <div class="rak-buku">
+                <h2>Selesai dibaca</h2>
+                <div id="daftarBukuSelesaiDibaca" class="daftarBuku">
+                    <!-- <div class="isi">
+                        <h3>Judul Buku</h3>
+                        <p>Penulis : </p>
+                        <p>Tahun terbit :</p>
+                        <div class="buttons">
+                            <button class="tandaiBelumDibaca">
+                                <span class="material-symbols-outlined">
+                                    cancel
+                                </span>
+                            </button>
+                            <button class="hapus">
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <!-- Rak buku end -->
+    </main>
+
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
