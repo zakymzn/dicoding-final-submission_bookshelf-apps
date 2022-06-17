@@ -3,16 +3,31 @@ const RENDER_EVENT = 'render-buku';
 const SAVED_EVENT = 'saved-buku';
 const STORAGE_KEY = 'BOOKSHELF-APPS';
 
+
 document.addEventListener('DOMContentLoaded', function () {
-    const submitForm = document.getElementById('input-buku');
-    submitForm.addEventListener('submit', function (event) {
+    // const submitForm = document.getElementById('input-buku');
+    // submitForm.addEventListener('submit', function (event) {
+    //     event.preventDefault();
+    //     tambahBuku();
+    // });
+
+    const buttonBelumSelesai = document.getElementById('submitBelumSelesaiDibaca');
+    const buttonSelesai = document.getElementById('submitSelesaiDibaca');
+
+    buttonBelumSelesai.addEventListener('click', function (event) {
         event.preventDefault();
-        tambahBuku();
+        tambahBuku(false);
+    });
+
+    buttonSelesai.addEventListener('click', function (event) {
+        event.preventDefault();
+        tambahBuku(true);
     });
 
     if (storageTersedia()) {
         loadDataDariStorage();
     }
+
 });
 
 document.addEventListener(RENDER_EVENT, function () {
@@ -64,19 +79,21 @@ function saveData() {
     }
 }
 
-function tambahBuku() {
+function tambahBuku(baca) {
     const judulBuku = document.getElementById('inputJudul').value;
     const penulisBuku = document.getElementById('inputPenulis').value;
     const tahunTerbit = document.getElementById('inputTahun').value;
 
     const generateID = generateId();
-    const bukuObject = generateBukuObject(generateID, judulBuku, penulisBuku, tahunTerbit, false);
+    const bukuObject = generateBukuObject(generateID, judulBuku, penulisBuku, tahunTerbit, baca);
 
     daftarBuku.push(bukuObject);
 
     document.dispatchEvent(new Event(RENDER_EVENT));
 
     saveData();
+
+    return baca;
 }
 
 function generateId() {
@@ -126,7 +143,8 @@ function inputBuku(bukuObject) {
         });
 
         buttons.append(cancelButton, deleteButton);
-    } else {
+    }
+    else {
         const checkButtonIcon = document.createElement('span');
         checkButtonIcon.classList.add('material-symbols-outlined');
         checkButtonIcon.innerText = 'check_circle';

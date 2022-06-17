@@ -14,7 +14,6 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #CAC1B0;
 }
 
 /* Header start */
@@ -103,10 +102,26 @@ h1 {
     display: none;
 }
 
+/* Dark mode effect start */
+.dark {
+    background-color: black;
+    color: #CAC1B0;
+}
+
+.light {
+    background-color: #CAC1B0;
+}
+
+.light-input {
+    color: black;
+}
+
+.dark-input {
+    color: white;
+}
+/* Dark mode effect end */
 /* Dark mode toggle end */
-
 /* Menu end */
-
 /* Header End */
 
 /* Section input buku start */
@@ -218,6 +233,7 @@ h1 {
 .daftarBuku {
     border: #854B50 3px solid;
     border-radius: 20px;
+    padding: 1em;
 }
 
 .isi {
@@ -228,13 +244,14 @@ h1 {
     color: white;
 }
 
-.isi h3{
+.isi h3 {
     margin: 0;
 }
 
 .buttons {
     text-align: right;
 }
+
 /* Section rak buku end */
 
 @media screen and (max-width: 665px) {
