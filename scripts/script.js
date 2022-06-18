@@ -111,11 +111,12 @@ function inputBuku(bukuObject) {
     textTahun.innerText = 'Tahun terbit : ' + bukuObject.year;
 
     const deleteButtonIcon = document.createElement('span');
-    deleteButtonIcon.classList.add('material-symbols-outlined');
+    deleteButtonIcon.setAttribute('class', 'material-symbols-outlined');
     deleteButtonIcon.innerText = 'delete';
 
     const deleteButton = document.createElement('button');
-    deleteButton.classList.add('hapus');
+    deleteButton.setAttribute('class', 'hapus');
+    deleteButton.setAttribute('title', 'Hapus buku');
     deleteButton.append(deleteButtonIcon);
 
     deleteButton.addEventListener('click', function () {
@@ -123,19 +124,20 @@ function inputBuku(bukuObject) {
     });
 
     const buttons = document.createElement('div');
-    buttons.classList.add('buttons');
+    buttons.setAttribute('class', 'buttons');
 
     const isi = document.createElement('div');
-    isi.classList.add('isi');
+    isi.setAttribute('class', 'isi');
     isi.setAttribute('id', `buku-${bukuObject.id}`);
 
     if (bukuObject.isComplete) {
         const cancelButtonIcon = document.createElement('span');
-        cancelButtonIcon.classList.add('material-symbols-outlined');
+        cancelButtonIcon.setAttribute('class', 'material-symbols-outlined');
         cancelButtonIcon.innerText = 'cancel';
 
         const cancelButton = document.createElement('button');
-        cancelButton.classList.add('tandaiBelumDibaca');
+        cancelButton.setAttribute('class', 'tandaiBelumDibaca');
+        cancelButton.setAttribute('title', 'Tandai belum dibaca');
         cancelButton.append(cancelButtonIcon);
 
         cancelButton.addEventListener('click', function () {
@@ -146,11 +148,12 @@ function inputBuku(bukuObject) {
     }
     else {
         const checkButtonIcon = document.createElement('span');
-        checkButtonIcon.classList.add('material-symbols-outlined');
+        checkButtonIcon.setAttribute('class', 'material-symbols-outlined');
         checkButtonIcon.innerText = 'check_circle';
 
         const checkButton = document.createElement('button');
-        checkButton.classList.add('tandaiSelesaiDibaca');
+        checkButton.setAttribute('class', 'tandaiSelesaiDibaca');
+        checkButton.setAttribute('title', 'Tandai selesai dibaca');
         checkButton.append(checkButtonIcon);
 
         checkButton.addEventListener('click', function () {
