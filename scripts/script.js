@@ -3,14 +3,7 @@ const RENDER_EVENT = 'render-buku';
 const SAVED_EVENT = 'saved-buku';
 const STORAGE_KEY = 'BOOKSHELF-APPS';
 
-
 document.addEventListener('DOMContentLoaded', function () {
-    // const submitForm = document.getElementById('input-buku');
-    // submitForm.addEventListener('submit', function (event) {
-    //     event.preventDefault();
-    //     tambahBuku();
-    // });
-
     const buttonBelumSelesai = document.getElementById('submitBelumSelesaiDibaca');
     const buttonSelesai = document.getElementById('submitSelesaiDibaca');
 
@@ -27,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (storageTersedia()) {
         loadDataDariStorage();
     }
-
 });
 
 document.addEventListener(RENDER_EVENT, function () {
@@ -38,7 +30,19 @@ document.addEventListener(RENDER_EVENT, function () {
     const bukuSelesaiDibaca = document.getElementById('daftarBukuSelesaiDibaca');
     bukuSelesaiDibaca.innerHTML = '';
 
-    for (const bukuItem of daftarBuku) {
+    // for (const bukuItem of daftarBuku) {
+    //     const bukuElemen = inputBuku(bukuItem);
+    //     console.log(bukuElemen);
+
+    //     if (!bukuItem.isComplete) {
+    //         bukuBelumSelesaiDibaca.append(bukuElemen);
+    //     } else {
+    //         bukuSelesaiDibaca.append(bukuElemen);
+    //     }
+    // }
+
+    for (let i = 0; i < daftarBuku.length; i++) {
+        const bukuItem = daftarBuku[i];
         const bukuElemen = inputBuku(bukuItem);
 
         if (!bukuItem.isComplete) {
@@ -46,7 +50,9 @@ document.addEventListener(RENDER_EVENT, function () {
         } else {
             bukuSelesaiDibaca.append(bukuElemen);
         }
+
     }
+
 });
 
 document.addEventListener(SAVED_EVENT, function () {
@@ -119,9 +125,37 @@ function inputBuku(bukuObject) {
     deleteButton.setAttribute('title', 'Hapus buku');
     deleteButton.append(deleteButtonIcon);
 
+    const container = document.getElementById('container');
+    const deleteDialog = document.getElementById('delete-dialog');
+    const bukuDihapus = document.getElementById('buku-dihapus');
+    const buttonYa = document.getElementById('ya');
+    const buttonTidak = document.getElementById('tidak');
+    const main = document.getElementById('main');
+
+    // saat tombol delete diklik
     deleteButton.addEventListener('click', function () {
-        hapusBuku(bukuObject.id);
+        main.setAttribute('class', 'blur'); // memberikan efek blur pada id main
+        container.removeAttribute('class', 'sembunyikan'); // menampilkan container
+        deleteDialog.removeAttribute('class', 'sembunyikan'); // menampilkan delete dialog
+        buttonYa.addEventListener('click', function () { // jika tombol 'Ya' diklik
+            deleteDialog.setAttribute('class', 'sembunyikan'); // menyembunyikan delete dialog
+            bukuDihapus.removeAttribute('class', 'sembunyikan'); // menampilkan dialog keterangan buku dihapus
+            hapusBuku(bukuObject.id); // menghapus buku
+            setTimeout(function () {
+                bukuDihapus.setAttribute('class', 'sembunyikan'); // menyembunyikan dialog keterangan buku dihapus
+                container.setAttribute('class', 'sembunyikan'); // menyembunyikan container
+                main.removeAttribute('class', 'blur'); // menghilangkan efek blur di tag main    
+            },5000); // memberikan delay selama 5 detik sebelum dialog keterangan buku dihapus hilang
+        });
+    
+        buttonTidak.addEventListener('click', function () { // jika tombol 'Tidak' diklik
+            deleteDialog.setAttribute('class', 'sembunyikan'); // menyembunyikan delete dialog
+            container.setAttribute('class', 'sembunyikan'); // menyembunyikan container
+            main.removeAttribute('class', 'blur'); // menghilangkan efek blur pada tag main
+        });
     });
+
+
 
     const buttons = document.createElement('div');
     buttons.setAttribute('class', 'buttons');
@@ -235,3 +269,51 @@ function loadDataDariStorage() {
 
     document.dispatchEvent(new Event(RENDER_EVENT));
 }
+
+const search = document.getElementById('input-search');
+const dataBuku = document.querySelectorAll('.isi');
+// const dataJudulBuku1 = inputBuku(bukuObject.title);
+const dataJudulBuku2 = document.querySelectorAll('h3');
+
+// console.log(bukuElemen);
+
+search.addEventListener('keyup', function () {
+    console.log(search.value.toLowerCase());
+    const searchValue = search.value.toLowerCase();
+    // let regex = new RegExp(searchValue, 'i');
+    // let filtered = daftarBuku.filter(item => regex.test(item));
+    // console.log(filtered);
+
+    // let filtered = daftarBuku.filter(buku => buku.includes(searchValue));
+    // console.log(filtered);
+
+    document.addEventListener(RENDER_EVENT, function () {
+        const search = document.getElementById('input-search');
+        const dataBuku = document.querySelectorAll('.isi');
+        const dataJudulBuku2 = document.querySelectorAll('h3');
+        for (let i = 0; i < daftarBuku.length; i++) {
+            const judulBuku = daftarBuku[i].title.toLowerCase();
+
+            const bukuItem = daftarBuku;
+            const bukuElemen = inputBuku(bukuItem);
+            console.log(bukuElemen);
+
+            if (searchValue == judulBuku) {
+                console.log('Hasil = ' + judulBuku);
+                dataBuku[i].setAttribute('style', 'display: block;');
+            } else {
+                dataBuku[i].setAttribute('style', 'display: none;');
+            }
+        }
+    })
+
+
+    // document.addEventListener(RENDER_EVENT, function () {
+    //     for (let i = 0; i < daftarBuku.length; i++) {
+    //         const element = daftarBuku[i];
+    //         const bukuElemen = inputBuku(element);
+    //         console.log(bukuElemen);
+    //     }
+
+    // })
+});
