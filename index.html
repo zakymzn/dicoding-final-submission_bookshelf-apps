@@ -16,29 +16,12 @@
 
 <body>
     <header>
-        <div id="judul">
+        <div id="header">
             <a href="https://www.flaticon.com/free-icons/bookshelf" title="bookshelf icons">
                 <img src="image/bookshelf.png" alt="logo" id="logo">
             </a>
             <h1>Bookshelf Apps</h1>
-        </div>
-
-        <div id="menu">
-            <!-- Search bar -->
-            <div id="search-bar">
-                <form id="searching">
-                    <input type="text" name="search" id="input-search" placeholder="Cari buku di sini ...">
-                    <!-- <div id="search"> -->
-                    <button id="tombol-search" type="submit">
-                        <span class="material-symbols-outlined">
-                            search
-                        </span>
-                    </button>
-                    <!-- </div> -->
-
-                </form>
-            </div>
-
+            
             <!-- Dark Mode -->
             <div id="darkMode">
                 <input type="checkbox" id="darkToggle">
@@ -71,7 +54,7 @@
                 <div class="input">
                     <label for="inputTahun">Tahun</label>
                     <br>
-                    <input type="text" id="inputTahun" class="light-input" required>
+                    <input type="number" id="inputTahun" class="light-input" required>
                 </div>
                 <p><strong>Masukkan ke</strong></p>
                 <div id="input-button">
@@ -92,23 +75,7 @@
             <div class="rak-buku">
                 <h2>Belum selesai dibaca</h2>
                 <div id="daftarBukuBelumSelesaiDibaca" class="daftarBuku">
-                    <!-- <div class="isi">
-                        <h3>Judul Buku</h3>
-                        <p>Penulis : </p>
-                        <p>Tahun terbit :</p>
-                        <div class="buttons">
-                            <button class="tandaiSelesaiDibaca">
-                                <span class="material-symbols-outlined">
-                                    check_circle
-                                </span>
-                            </button>
-                            <button class="hapus">
-                                <span class="material-symbols-outlined">
-                                    delete
-                                </span>
-                            </button>
-                        </div>
-                    </div> -->
+                    
                 </div>
             </div>
 
@@ -116,23 +83,7 @@
             <div class="rak-buku">
                 <h2>Selesai dibaca</h2>
                 <div id="daftarBukuSelesaiDibaca" class="daftarBuku">
-                    <!-- <div class="isi">
-                        <h3>Judul Buku</h3>
-                        <p>Penulis : </p>
-                        <p>Tahun terbit :</p>
-                        <div class="buttons">
-                            <button class="tandaiBelumDibaca">
-                                <span class="material-symbols-outlined">
-                                    cancel
-                                </span>
-                            </button>
-                            <button class="hapus">
-                                <span class="material-symbols-outlined">
-                                    delete
-                                </span>
-                            </button>
-                        </div>
-                    </div> -->
+                    
                 </div>
             </div>
         </section>
