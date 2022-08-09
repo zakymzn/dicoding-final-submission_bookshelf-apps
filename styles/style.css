@@ -331,6 +331,14 @@ h1 {
 
 /* Button back to top design end */
 
+/* Footer design start */
+footer {
+    padding: 1em;
+    text-align: center;
+}
+
+/* Footer design end */
+
 @media screen and (max-width: 665px) {
     header {
         justify-content: center;
